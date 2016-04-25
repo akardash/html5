@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>HTML5</title>
     <link rel="stylesheet" href="main.css" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    
 </head>
 <body>
     <header>
@@ -15,9 +18,49 @@
     </nav>
     
     <section>
-        <form>
+       <form id="form">
+          <fieldset>
+              <legend>Personal Data</legend>
           <label for="name">Name:<br></label>
-          <input type="text" id="name" placeholder="Enter yout name">
+          <input type="text" id="name" name="name" class="name" placeholder="Enter your name" autofocus required/><br>
+          <label for="surname">Surname:</label><br>
+          <input type="text" id="surname" name="surname" placeholder="Enter your surname" /><br>
+          <label for="telephone">Telephone number:</label><br>
+          <input type="tel" name="telephone" id="telephone"/><br>
+          <label for="mail">Email:</label><br>
+          <input type="email" name="mail" id="mail"/><br>
+          <label for="bday">Date of birthday:</label><br>
+          <input type="date" name="bday"/><br>
+          <label for="lang">Foreign languages:</label><br>
+          <input type="checkbox" name="l1" checked/>ukrainian
+          <input type="checkbox" name="l2" />english
+          <input type="checkbox" name="l3" />french
+          <br>
+          <label for="sex">Sex:</label><br>
+          <input type="radio" name="sex" value="male">Male
+          <input type="radio" name="sex" value="female" />Female
+          <br>
+          Computer skills:<br>
+          <select name="skills" size="1">
+              <option selected value="ui"/>Web UI
+              <option value="lamp"/>LAMP
+              <option value="net"/>.NET
+          </select>
+          <br>
+          Your favorite browser:<br>
+          <input list="browsers" name="browser">
+          <datalist id="browsers">
+          <option value="Internet Explorer">
+          <option value="Firefox">
+          <option value="Chrome">
+          <option value="Opera">
+          <option value="Safari">
+          </datalist><br>
+          Enter number (between 1 and 5):<br>
+          <input type="number" name="number" min="1" max="5"><br>
+          <input type="submit" name="ok" value="Let's Go!" />
+          <input type="reset" name="reset" value="Reset" />
+          </fieldset>
         </form>
     </section>
     

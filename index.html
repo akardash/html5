@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <title>HTML5</title>
     <link rel="stylesheet" href="main.css" type="text/css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script type="text/javascript" src="script.js"></script>
-    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 </head>
 <body>
     <header>
@@ -22,19 +20,19 @@
           <fieldset>
               <legend>Personal Data</legend>
           <label for="name">Name:<br></label>
-          <input type="text" id="name" name="name" class="name" placeholder="Enter your name" autofocus required/><br>
+          <input type="text" id="name" name="name" class="remember" placeholder="Enter your name" autofocus required/><br>
           <label for="surname">Surname:</label><br>
-          <input type="text" id="surname" name="surname" placeholder="Enter your surname" /><br>
+          <input type="text" id="surname" name="surname" class="remember" placeholder="Enter your surname" /><br>
           <label for="telephone">Telephone number:</label><br>
-          <input type="tel" name="telephone" id="telephone"/><br>
+          <input type="tel" name="telephone" id="telephone" class="remember" placeholder="3-xxxx-xx-xx-xxx" pattern="3-[0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]{3}" /><br>
           <label for="mail">Email:</label><br>
-          <input type="email" name="mail" id="mail"/><br>
+          <input type="email" name="mail" id="mail" class="remember" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" /><br>
           <label for="bday">Date of birthday:</label><br>
           <input type="date" name="bday"/><br>
-          <label for="lang">Foreign languages:</label><br>
-          <input type="checkbox" name="l1" checked/>ukrainian
-          <input type="checkbox" name="l2" />english
-          <input type="checkbox" name="l3" />french
+          <label>Foreign languages:</label><br>
+          <input type="checkbox" id="box" checked/>ukrainian
+          <input type="checkbox" id="box" />english
+          <input type="checkbox" id="box" />french
           <br>
           <label for="sex">Sex:</label><br>
           <input type="radio" name="sex" value="male">Male
@@ -67,5 +65,34 @@
     <footer>
         <center>All rights reserved</center>
     </footer>
+    
+    <script>
+ $(document).ready(function() {
+          function init() {
+            if (localStorage["name"]) {
+              $('#name').val(localStorage["name"]);
+            }
+            if (localStorage["surname"]) {
+              $('#surname').val(localStorage["surname"]);
+            }
+            if (localStorage["telephone"]) {
+              $('#telephone').val(localStorage["telephone"]);
+            }
+            if (localStorage["mail"]) {
+              $('#mail').val(localStorage["mail"]);
+            }
+          }
+          init();
+        });
+
+        $('.remember').keyup(function() {
+          localStorage[$(this).attr('name')] = $(this).val();
+        });
+
+        $('#form').submit(function() {
+          localStorage.clear();
+        });
+
+    </script>
 </body>
 </html>
